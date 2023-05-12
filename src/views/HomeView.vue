@@ -6,6 +6,7 @@ import plentysrtupCert1 from '../assets/images/Plentymarkets _Zertifikat_1.svg'
 import plentysrtupCert2 from '../assets/images/Plentymarkets Zertifikat_2.svg'
 import plentysrtupCert3 from '../assets/images/Plentymarkets Zertifikat_3.svg'
 import plentyCertNumber from '../assets/images/Plentymarkets Zertifikat_number.svg'
+import goDigitalLogo from '../assets/images/go-digital_logo.png'
 import { ref, onMounted } from 'vue'
 
 const loaded = ref(false)
@@ -33,15 +34,23 @@ onMounted(() => {
             Jetzt Kontaktieren
           </button>
         </div>
-        <div class="h-[16rem] second-sub-child flex flex-col justify-center items-center pt-32">
-          <p class="text-menuGrey text-xl mb-10">Vollzertifizierter plentymarkets Expert Partner</p>
+        <div class="h-[26rem] second-sub-child flex flex-col justify-center items-center pt-0">
+          <p class="text-menuGrey text-xl mb-7 pr-12">
+            Vollzertifizierter plentymarkets Expert Partner
+          </p>
           <div class="flex flex-row justify-center">
-            <img :src="plentysrtupCert" alt="" />
-            <img :src="plentysrtupCert1" alt="" />
-            <img :src="plentysrtupCert2" alt="" />
-            <img :src="plentysrtupCert3" alt="" />
+            <img :src="plentysrtupCert" class="w-1/5" alt="" />
+            <img :src="plentysrtupCert1" class="w-1/5" alt="" />
+            <img :src="plentysrtupCert2" class="w-1/5" alt="" />
+            <img :src="plentysrtupCert3" class="w-1/5" alt="" />
             <img :src="plentyCertNumber" alt="" class="ml-12" />
           </div>
+          <div class="beratung_section bottom-0 pr-12">
+            <p class="text-menuGrey text-xl mt-9 mb-5 pb-5">Autorisierte Beratungsagentur</p>
+            <img :src="goDigitalLogo" alt="godigital logo " class="w-1/7 absolute" />
+          </div>
+          <div class="hr first"></div>
+          <div class="hr second"></div>
         </div>
       </div>
 
@@ -56,7 +65,7 @@ onMounted(() => {
 
           <img :src="dotPatternBg" alt="" />
         </div>
-        <div class="h-[28rem] relative">
+        <div class="h-[38rem] relative">
           <img :src="dotPatternBg" alt="" :class="{ 'animate-item-second-div': loaded }" />
           <div class="hr first"></div>
           <div class="hr second"></div>
@@ -80,6 +89,7 @@ main {
       .first-sub-child {
         position: relative;
         margin-left: 20%;
+
         .hr {
           width: 2px;
           height: 100%;
@@ -191,7 +201,6 @@ main {
 
       &.second {
         right: 10%;
-        z-index: -1;
       }
     }
   }
