@@ -11,5 +11,5 @@ jobs:
         with:
           username: 'Aditya-Raj-Tiwari'
           reponame: 'website_webimpact'
-          token: ${{ secrets.DEPLOY_TOKEN }} # Leave this line unchanged
+          token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
 
