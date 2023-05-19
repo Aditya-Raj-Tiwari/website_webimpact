@@ -1,4 +1,4 @@
-name: Build Vue
+name: Deploy 🚀
 on: [push]
 jobs:
   build_vue:
@@ -11,4 +11,5 @@ jobs:
         with:
           username: 'Aditya-Raj-Tiwari'
           reponame: 'website_webimpact'
-          token: ${{ secrets.fork }} # Leave this line unchanged
+          token: ${{ secrets.DEPLOY_TOKEN }} # Leave this line unchanged
+
