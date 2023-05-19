@@ -11,4 +11,4 @@ jobs:
         with:
           username: 'Aditya-Raj-Tiwari'
           reponame: 'website_webimpact'
-          token: ${{ secrets.GITHUB_TOKEN }} # Leave this line unchanged
+          token: ${{ secrets.fork }} # Leave this line unchanged
