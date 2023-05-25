@@ -20,3 +20,62 @@ header {
     }
   }
 }
+
+
+// HOME RANKING
+
+.ranking-shadow {
+  background: #FFFFFF;
+  box-shadow: 0px 5px 15px rgba(49, 79, 111, 0.25);
+  border-radius: 0px 8px 0px 0px;
+}
+
+.slider-wrapper {
+  position: relative;
+  height: 4rem;
+  border: 0.5px solid #888;
+  background: white;
+}
+
+.ranking-wrapper {
+  left: 56%;
+}
+
+.blur-background {
+  background-image: url('../images/blur_bg\ 1.png');
+}
+
+.plenty-icon {
+    background-image: url('../images/plentymarkets\ Logo\ Hintergrund.png');
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: bottom;
+}
+
+
+// HOME CONTENT TABS 
+
+#myTabContent {
+  background: linear-gradient(180deg, #E8EEF4 10.94%, rgba(232, 238, 244, 0) 100%);
+}
+
+.title-wrapper {
+  background: linear-gradient(90deg, #314F6F 0.9%, rgba(49, 79, 111, 0.5) 50%);
+}
+
+.tab-custom-pos {
+  bottom: -75px;
+}
+
+.tab-content-bg {
+  padding-top: 84px;
+  padding-right: 220px;
+  padding-left: 230px;
+}
+
+.shadow-button {
+  box-shadow: 0px 0px 6px 1px #887;
+}

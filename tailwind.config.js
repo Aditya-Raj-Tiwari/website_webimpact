@@ -1,5 +1,6 @@
 module.exports = {
-  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}",],
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}", 
+  "./node_modules/flowbite/**/*.js"],
   theme: {
     extend: {
       colors: {
@@ -7,6 +8,7 @@ module.exports = {
         'menuGrey': '#C3CFD9',
         'menuHeaderGrey': '#314F6F',
         'bgMenuGridRed': '#FF4D00',
+        'rankingTextGrey': '#94A2AE'
 
       },
       width: {
@@ -28,6 +30,8 @@ module.exports = {
         'menuitem': '3.3rem'
       }
     },
-    plugins: []
+    plugins: [
+      require('flowbite/plugin')
+    ]
   }
 }

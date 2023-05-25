@@ -8,6 +8,8 @@ import plentysrtupCert3 from '../assets/images/Plentymarkets Zertifikat_3.svg'
 import plentyCertNumber from '../assets/images/Plentymarkets Zertifikat_number.svg'
 import goDigitalLogo from '../assets/images/go-digital_logo.png'
 import { ref, onMounted } from 'vue'
+import HomeRanking from '../components/HomeRanking.vue'
+import HomeContentTabs from '../components/HomeContentTabs.vue'
 
 const loaded = ref(false)
 onMounted(() => {
@@ -65,13 +67,15 @@ onMounted(() => {
 
           <img :src="dotPatternBg" alt="" />
         </div>
-        <div class="h-[38rem] relative">
+        <div class="h-[38rem] relative blur-background">
           <img :src="dotPatternBg" alt="" :class="{ 'animate-item-second-div': loaded }" />
           <div class="hr first"></div>
           <div class="hr second"></div>
         </div>
       </div>
     </div>
+    <HomeRanking></HomeRanking>
+    <HomeContentTabs></HomeContentTabs>
   </main>
 </template>
 
