@@ -1,15 +1,54 @@
 <script setup>
-import homepageHeroImg from '../assets/images/temp-homepage-img.png'
-import dotPatternBg from '../assets/images/dot-pattern-bg.png'
-import plentysrtupCert from '../assets/images/Plentymarkets_Zertifikat.svg'
-import plentysrtupCert1 from '../assets/images/Plentymarkets _Zertifikat_1.svg'
-import plentysrtupCert2 from '../assets/images/Plentymarkets Zertifikat_2.svg'
-import plentysrtupCert3 from '../assets/images/Plentymarkets Zertifikat_3.svg'
-import plentyCertNumber from '../assets/images/Plentymarkets Zertifikat_number.svg'
-import goDigitalLogo from '../assets/images/go-digital_logo.png'
+import dotPatternBg from '../../assets/images/dot-pattern-bg.png'
+import plentysrtupCert from '../../assets/images/Plentymarkets_Zertifikat.svg'
+import plentysrtupCert1 from '../../assets/images/Plentymarkets _Zertifikat_1.svg'
+import plentysrtupCert2 from '../../assets/images/Plentymarkets Zertifikat_2.svg'
+import plentysrtupCert3 from '../../assets/images/Plentymarkets Zertifikat_3.svg'
+import plentyCertNumber from '../../assets/images/Plentymarkets Zertifikat_number.svg'
+import teamPhotoMeeting from '../../assets/images/TeamMeetingpic.png'
+import goDigitalLogo from '../../assets/images/go-digital_logo.png'
 import { ref, onMounted } from 'vue'
-import HomeRanking from '../components/HomeRanking.vue'
-import HomeContentTabs from '../components/HomeContentTabs.vue'
+import HomeRanking from '../../components/Homepage/HomeRanking.vue'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import HomeContentTabs from '../../components/Homepage/HomeContentTabs.vue'
+import { gsap } from 'gsap'
+import AnimatedImage from '../../components/Homepage/AnimatedImage.vue'
+
+let meetingContainer = ref(null)
+let certificationContainer = ref(null) // New ref for the certifications container
+gsap.registerPlugin(ScrollTrigger)
+
+onMounted(() => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: meetingContainer.value,
+      start: 'top 75%'
+    }
+  })
+
+  tl.from(meetingContainer.value.children, {
+    duration: 1,
+    y: 100,
+    autoAlpha: 0,
+    ease: 'power3.out',
+    stagger: 0.3
+  })
+
+  const tl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: certificationContainer.value,
+      start: 'top 75%'
+    }
+  })
+
+  tl2.from(certificationContainer.value.children, {
+    duration: 1,
+    y: 100,
+    autoAlpha: 0,
+    ease: 'power3.out',
+    stagger: 0.3
+  })
+})
 
 const loaded = ref(false)
 onMounted(() => {
@@ -22,16 +61,21 @@ onMounted(() => {
     <div class="grid grid-cols-2" :class="{ 'animate-item': loaded }">
       <div class="first-child" :class="{ 'animate-item-first-div': loaded }">
         <div class="h-[32rem] flex flex-col justify-center items-start first-sub-child">
-          <h1 class="text-7xl mb-3 font-bold tracking-wider">Optimieren</h1>
-          <h1 class="text-7xl mb-3 font-bold tracking-wider">Sie Ihr</h1>
-          <h1 class="text-7xl mb-5 font-bold tracking-wider">Geschäft.</h1>
-          <div class="hr first" :class="{ 'animate-item-hr': loaded }"></div>
-          <p class="w-3/4 text-menuGrey">
-            Wir helfen Ihnen Potentiale ihres eCommerce <br />
-            Geschäfts zu erkennen, um Ihr System sowie Ihre <br />Prozesse effizient zu optimieren.
-          </p>
-          <div class="hr second" :class="{ 'animate-item-second-div': loaded }"></div>
+          <div class="container-wrapper">
+            <h1 class="text-7xl mb-3 font-bold tracking-wider">Optimieren</h1>
+            <h1 class="text-7xl mb-3 font-bold tracking-wider">Sie Ihr</h1>
+            <h1 class="text-7xl mb-5 font-bold tracking-wider">Geschäft.</h1>
+          </div>
 
+          <div class="hr first" :class="{ 'animate-item-hr': loaded }"></div>
+          <div class="container-wrapper">
+            <p class="w-100 text-menuGrey">
+              Wir helfen Ihnen Potentiale ihres eCommerce <br />
+              Geschäfts zu erkennen, um Ihr System sowie Ihre <br />Prozesse effizient zu
+              optimieren.
+            </p>
+          </div>
+          <div class="hr second" :class="{ 'animate-item-second-div': loaded }"></div>
           <button class="text-xl rounded-md text-menuHeaderGrey font-semibold">
             Jetzt Kontaktieren
           </button>
@@ -40,7 +84,7 @@ onMounted(() => {
           <p class="text-menuGrey text-xl mb-7 pr-12">
             Vollzertifizierter plentymarkets Expert Partner
           </p>
-          <div class="flex flex-row justify-center">
+          <div class="flex flex-row justify-center" ref="certificationContainer">
             <img :src="plentysrtupCert" class="w-1/5" alt="" />
             <img :src="plentysrtupCert1" class="w-1/5" alt="" />
             <img :src="plentysrtupCert2" class="w-1/5" alt="" />
@@ -56,15 +100,9 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="second-child">
+      <div class="second-child h-80">
         <div class="h-[20rem] bg-bgMenuGridRed second-sub-child">
-          <img
-            class="hero"
-            :class="{ 'animate-item-img-hero': loaded }"
-            :src="homepageHeroImg"
-            alt=""
-          />
-
+          <AnimatedImage :src="dotPatternBg" />
           <img :src="dotPatternBg" alt="" />
         </div>
         <div class="h-[38rem] relative blur-background">
@@ -76,6 +114,17 @@ onMounted(() => {
     </div>
     <HomeRanking></HomeRanking>
     <HomeContentTabs></HomeContentTabs>
+    <div class="meeting-container flex flex-col" ref="meetingContainer">
+      <h1 class="text-7xl mb-3 font-bold tracking-wider">
+        Erstge<span class="first">spräch</span> <span>vereinbaren</span>
+      </h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, inventore reiciendis
+        optio esse rem, dicta maiores, molestiae cumque consequuntur dolor sequi accusamus sit iusto
+        excepturi nesciunt possimus odio eaque hic?
+      </p>
+      <img :src="teamPhotoMeeting" alt="" />
+    </div>
   </main>
 </template>
 
@@ -92,7 +141,11 @@ main {
     & .first-child {
       .first-sub-child {
         position: relative;
-        margin-left: 20%;
+
+        .container-wrapper {
+          margin-left: 22%;
+          width: 500px !important;
+        }
 
         .hr {
           width: 2px;
@@ -102,7 +155,7 @@ main {
           position: absolute;
 
           &.first {
-            left: -30px;
+            left: 20%;
 
             &::before {
               content: '';
@@ -126,13 +179,14 @@ main {
           position: absolute;
           bottom: -20px;
           left: 18%;
-          transform: translateX(-50%);
+          transform: translateX(30px);
           background: rgba(255, 255, 255, 1);
           box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           border-radius: 10px;
           border: 1px solid rgba(255, 255, 255, 0.18);
+          z-index: 99;
         }
       }
       .second-sub-child {
@@ -144,6 +198,33 @@ main {
           rgba(232, 238, 244, 1) 64%,
           rgba(232, 238, 244, 1) 100%
         );
+        position: relative;
+
+        .hr {
+          position: absolute;
+          top: 0;
+          height: 250px;
+
+          &.first {
+            left: 20%;
+            top: 0;
+            &::before {
+              display: none !important;
+              right: 20px !important;
+            }
+          }
+
+          &.second {
+            right: 53%;
+            z-index: 0;
+          }
+        }
+
+        .flex {
+          img {
+            z-index: 2;
+          }
+        }
       }
     }
     & .second-child {
@@ -207,6 +288,36 @@ main {
         right: 10%;
       }
     }
+  }
+}
+
+.meeting-container {
+  height: 55vh;
+  background: #384e6c;
+  justify-content: space-evenly;
+  padding-top: 50px;
+  transform: translateY(50px);
+  color: #fff;
+  align-items: center;
+
+  h1 {
+    span {
+      background: -webkit-linear-gradient(0deg, #f1ecec80, #d5cdcd80, #a09f9f80);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      &.first {
+        background: -webkit-linear-gradient(0deg, #f3eeee, #f3eded80, #f1ecec80);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+  p {
+    max-width: 820px;
+    text-align: center;
   }
 }
 

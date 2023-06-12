@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { initFlowbite } from 'flowbite'
-import leistungBg from '../assets/images/image-7.png'
+import leistungBg from '../../assets/images/image-7.png'
 
 const loaded = ref(false)
 onMounted(() => {
@@ -10,15 +10,45 @@ onMounted(() => {
 })
 </script>
 
+<style lang="scss">
+.outer-wrapper {
+  position: relative;
+  width: 100%;
+
+  .title-wrapper {
+    background-image: url('/website_webimpact/src/assets/images/blur_bg 1.png');
+    background-position: right;
+    background-repeat: no-repeat;
+    position: relative;
+    h1 {
+      position: absolute;
+      left: 12%;
+      bottom: 80px;
+      background: -webkit-linear-gradient(
+        180deg,
+        #94a2ae,
+        rgba(49, 79, 111, 0.5019607843),
+        #314f6f
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 3.4rem !important;
+      font-weight: 600 !important;
+    }
+  }
+}
+</style>
+
 <template>
   <div class="outer-wrapper relative">
-    <div class="title-wrapper h-[12rem] flex items-center">
-      <div class="title-inline-wrapper mt-8">Leistungübersicht</div>
+    <div class="title-wrapper h-[19rem] flex items-center">
+      <h1 class="text-6xl mb-3 font-bold tracking-wider">Leistungübersicht</h1>
     </div>
 
-    <div class="mb-4 border-b border-gray-200 absolute tab-custom-pos">
+    <div class="mb-4 border-b border-gray-200 absolute tab-custom-pos w-full">
       <ul
-        class="flex flex-wrap -mb-px text-sm font-medium text-center"
+        class="flex flex-wrap -mb-px text-sm font-medium text-center justify-evenly w-full"
         id="myTab"
         data-tabs-toggle="#myTabContent"
         role="tablist"
