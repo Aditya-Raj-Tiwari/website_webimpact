@@ -5,7 +5,7 @@ import shopifyIcon from '../../assets/images/shopify-icon.png'
 import shopwareIcon from '../../assets/images/shopware-icon.png'
 import jtlIcon from '../../assets/images/jtl-icon.png'
 import miraklIcon from '../../assets/images/mirakl-icon.png'
-import wooCommerceIcon from '../../assets/images/woocommerce-icon.png'
+import wooCommerceIcon from '../../assets/images/woo-Commerce-icon.png'
 
 const activeIndex = ref(0)
 
