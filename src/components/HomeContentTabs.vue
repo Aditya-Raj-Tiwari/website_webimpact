@@ -28,7 +28,7 @@ onMounted(() => {
             class="inline-block p-4 border-b-2 dark:border-transparent text-[#314F6F] hover:font-[700] hover:text-[#314F6F] dark:text-[#314F6F] border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-[#314F6F]"
             id="profile-tab"
             data-tabs-target="#profile"
-            type="button"
+            type=""
             role="tab"
             aria-controls="profile"
             aria-selected="false"
@@ -38,10 +38,10 @@ onMounted(() => {
         </li>
         <li class="mr-2" role="presentation">
           <button
-            class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:font-[700] text-[#314F6F] hover:border-gray-300"
+            class="inline-block p-4 border-b-2 dark:border-transparent text-[#314F6F] hover:font-[700] hover:text-[#314F6F] dark:text-[#314F6F] border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-[#314F6F]"
             id="dashboard-tab"
             data-tabs-target="#dashboard"
-            type="button"
+            type=""
             role="tab"
             aria-controls="dashboard"
             aria-selected="false"

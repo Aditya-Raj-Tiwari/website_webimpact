@@ -38,7 +38,7 @@
     "jsdom": "^21.1.0",
     "node-sass": "^8.0.0",
     "postcss": "^8.4.22",
-    "prettier": "^2.8.4",
+    "prettier": "^2.8.8",
     "sass": "^1.62.0",
     "sass-loader": "^13.2.2",
     "start-server-and-test": "^2.0.0",
