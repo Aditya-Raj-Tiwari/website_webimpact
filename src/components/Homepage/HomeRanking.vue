@@ -10,7 +10,7 @@ import plentyIcon from '../../assets/images/plenty_icon.png'
 
 <template>
   <Swiper
-    :slidesPerView="2.3"
+    :slidesPerView="2.7"
     :spaceBetween="10"
     on-navigation-hide="true"
     class="mySwiper-agentur py-6"
@@ -44,6 +44,8 @@ import plentyIcon from '../../assets/images/plenty_icon.png'
         </div>
       </div>
     </SwiperSlide>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
   </Swiper>
 </template>
 
@@ -52,9 +54,20 @@ import plentyIcon from '../../assets/images/plenty_icon.png'
 <style lang="scss">
 @import 'swiper/swiper-bundle.css';
 
-.mySwiper-agentur .swiper-wrapper {
-}
 .mySwiper-agentur {
+  position: relative;
+
+  & .swiper-button-next,
+  & .swiper-button-prev {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    z-index: 10;
+  }
+
+  & .swiper-button-next {
+    right: 30px; // Adjust based on the size of your icons
+  }
   &.swiper {
     padding-left: 3%;
     border: 1px solid #e2e7eb;
@@ -88,6 +101,10 @@ import plentyIcon from '../../assets/images/plenty_icon.png'
 
         & > div {
           height: 100%;
+        }
+
+        &:first-child {
+          margin-left: 20%;
         }
       }
     }
