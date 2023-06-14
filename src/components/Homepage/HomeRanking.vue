@@ -10,10 +10,10 @@ import plentyIcon from '../../assets/images/plenty_icon.png'
 
 <template>
   <Swiper
-    :slidesPerView="2.7"
+    :slidesPerView="2.3"
     :spaceBetween="10"
     on-navigation-hide="true"
-    class="mySwiper py-6"
+    class="mySwiper-agentur py-6"
     :loop="true"
     :autoplay="{ delay: 2000 }"
   >
@@ -52,38 +52,44 @@ import plentyIcon from '../../assets/images/plenty_icon.png'
 <style lang="scss">
 @import 'swiper/swiper-bundle.css';
 
-.mySwiper .swiper-wrapper {
-  padding-left: 3%;
+.mySwiper-agentur .swiper-wrapper {
 }
-
-.swiper {
-  border: 1px solid #e2e7eb;
-  height: 140px;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 20%;
-    height: 100%;
-    background: linear-gradient(to left, white, transparent);
-    z-index: 2;
-  }
-  .swiper-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    margin-left: 90px;
-    position: relative;
-
-    .swiper-slide {
+.mySwiper-agentur {
+  &.swiper {
+    padding-left: 3%;
+    border: 1px solid #e2e7eb;
+    height: 140px;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20%;
+      height: 100%;
+      background: linear-gradient(to left, white, transparent);
+      z-index: 2;
+    }
+    .swiper-wrapper {
       display: flex;
       align-items: center;
       justify-content: center;
       align-content: center;
-      color: #97a1ad !important;
+      margin-left: 90px;
+      position: relative;
+
+      .swiper-slide {
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        color: #97a1ad !important;
+        height: 100%;
+
+        & > div {
+          height: 100%;
+        }
+      }
     }
   }
 }

@@ -13,6 +13,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HomeContentTabs from '../../components/Homepage/HomeContentTabs.vue'
 import { gsap } from 'gsap'
 import AnimatedImage from '../../components/Homepage/AnimatedImage.vue'
+import CustomerReviews from '../../components/Homepage/CustomerReviews.vue'
 
 let meetingContainer = ref(null)
 let certificationContainer = ref(null) // New ref for the certifications container
@@ -125,6 +126,7 @@ onMounted(() => {
       </p>
       <img :src="teamPhotoMeeting" alt="" />
     </div>
+    <CustomerReviews />
   </main>
 </template>
 
@@ -292,10 +294,9 @@ main {
 }
 
 .meeting-container {
-  height: 55vh;
+  height: 60vh;
   background: #384e6c;
   justify-content: space-evenly;
-  padding-top: 50px;
   transform: translateY(50px);
   color: #fff;
   align-items: center;

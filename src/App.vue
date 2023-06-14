@@ -9,4 +9,10 @@ import GlobalNav from '@/views/nav/GlobalNav.vue'
   <footer></footer>
 </template>
 
-<style scoped></style>
+<style lang="scss">
+html,
+body,
+#app {
+  overflow-x: hidden !important;
+}
+</style>
