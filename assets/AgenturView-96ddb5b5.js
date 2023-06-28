@@ -1,0 +1,1 @@
+import{_ as e,o as c,c as n}from"./index-6bd5f944.js";const r={};function t(o,s){return c(),n("h1",null,"Agency here")}const a=e(r,[["render",t]]);export{a as default};
