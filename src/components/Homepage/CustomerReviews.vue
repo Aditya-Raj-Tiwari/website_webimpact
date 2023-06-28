@@ -15,6 +15,20 @@
               ipsum neque exercitationem fuga doloremque laboriosam debitis odit. Fugit sint totam
               est. Delectus dolorum nostrum tempore modi ullam.
             </p>
+            <div class="customer-quote">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod aspernatur fugiat modi
+                ipsum neque exercitationem fuga doloremque laboriosam debitis odit. Fugit sint totam
+                est. Delectus dolorum nostrum tempore modi ullam.
+              </p>
+              <div class="image-container">
+                <img :src="CustomerPic1" alt="" />
+                <div class="content">
+                  <p class="name">Julia Ritter</p>
+                  <p class="occupation">Geschäftsführerin</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="images-container relative">
             <div class="image-container lg:w-1/2 overflow-hidden">
@@ -32,6 +46,20 @@
               ipsum neque exercitationem fuga doloremque laboriosam debitis odit. Fugit sint totam
               est. Delectus dolorum nostrum tempore modi ullam.
             </p>
+            <div class="customer-quote">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod aspernatur fugiat modi
+                ipsum neque exercitationem fuga doloremque laboriosam debitis odit. Fugit sint totam
+                est. Delectus dolorum nostrum tempore modi ullam.
+              </p>
+              <div class="image-container">
+                <img :src="CustomerPic1" alt="" />
+                <div class="content">
+                  <p class="name">Julia Ritter</p>
+                  <p class="occupation">Geschäftsführerin</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="images-container relative">
             <div class="image-container lg:w-1/2 overflow-hidden">
@@ -48,6 +76,20 @@
               ipsum neque exercitationem fuga doloremque laboriosam debitis odit. Fugit sint totam
               est. Delectus dolorum nostrum tempore modi ullam.
             </p>
+            <div class="customer-quote">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod aspernatur fugiat modi
+                ipsum neque exercitationem fuga doloremque laboriosam debitis odit. Fugit sint totam
+                est. Delectus dolorum nostrum tempore modi ullam.
+              </p>
+              <div class="image-container">
+                <img :src="CustomerPic1" alt="" />
+                <div class="content">
+                  <p class="name">Julia Ritter</p>
+                  <p class="occupation">Geschäftsführerin</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="images-container relative">
             <div class="image-container lg:w-1/2 overflow-hidden">
@@ -83,8 +125,9 @@ import Swiper, { Navigation, Autoplay } from 'swiper'
 import 'swiper/swiper-bundle.css'
 import { gsap } from 'gsap'
 import SliderPic1 from '../../assets/images/desiaryMoodslidertempPic1.png'
+import CustomerPic1 from '../../assets/images/Julia-Ritter.png'
 
-Swiper.use([Navigation, Autoplay]) // Include Autoplay
+Swiper.use([Navigation, Autoplay])
 
 export default {
   setup() {
@@ -93,22 +136,31 @@ export default {
 
     onMounted(() => {
       nextTick(() => {
+        const tl = gsap.timeline()
+        tl.from('.image-container img', {
+          opacity: 0,
+          duration: 0.5
+        }).from(
+          '.content',
+          {
+            opacity: 0,
+            y: -20,
+            duration: 0.5
+          },
+          '+=0.5'
+        )
+
         // eslint-disable-next-line no-unused-vars
         const swiper = new Swiper('.mySwiper', {
           direction: 'horizontal',
           simulateTouch: true,
-          touchStartPreventDefault: false,
-          mousewheel: {
-            invert: false,
-            forceToAxis: true,
-            releaseOnEdges: true
-          },
           navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev'
           },
+          loop: true,
           autoplay: {
-            delay: 1000000
+            delay: 60002
           },
           on: {
             slideChangeTransitionStart: function () {
@@ -124,6 +176,14 @@ export default {
                 { opacity: 0, y: 50 },
                 { opacity: 1, y: 0, stagger: 0.2, duration: 0.6, delay: 0.3, ease: 'power1.out' }
               )
+
+              gsap.from(currentSlide.querySelector('.customer-quote'), {
+                scale: 0.5,
+                duration: 1,
+                zIndex: 99,
+                ease: 'elastic.out(1, 0.3)',
+                clearProps: 'all'
+              })
             }
           }
         })
@@ -132,6 +192,7 @@ export default {
         gsap.to('.zoom-image', {
           scale: 1.1,
           duration: 12,
+          zIndex: 9,
           repeat: -1,
           yoyo: true,
           ease: 'power1.inOut'
@@ -161,7 +222,7 @@ export default {
       }
     })
 
-    return { carouselRef, SliderPic1 }
+    return { carouselRef, SliderPic1, CustomerPic1 }
   }
 }
 </script>
@@ -244,12 +305,19 @@ html {
 
 .images-container {
   transform: translateX(-80px);
+  z-index: -1;
+  position: relative;
   .image-container {
     width: 500px;
     height: 500px;
     border-radius: 10px;
     position: relative;
     z-index: 2;
+
+    img {
+      position: relative;
+      z-index: 9;
+    }
   }
 
   .after-image {
@@ -283,16 +351,71 @@ html {
   }
 }
 
-.swiper-navigation {
-  width: 100%;
-  text-align: center;
-  .swiper-button-next {
-    position: absolute;
-    right: 30px !important;
+.customer-quote {
+  position: relative;
+  min-width: 1000px;
+  z-index: 99;
+  & > p {
+    background: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 30px 20px;
+    margin-top: 30px;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-top: 20px solid rgba(255, 255, 255, 0.95);
+      top: 97%; // You can adjust this to position the rectangle as needed
+      left: 100px;
+      transform: translateX(-50%);
+    }
   }
-  .swiper-button-prev {
-    position: absolute;
-    right: 90px !important;
+
+  .image-container {
+    margin-left: 45px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    .content {
+      margin-left: 20px;
+    }
+  }
+}
+
+.swiper-navigation {
+  top: 90px;
+  position: absolute;
+  max-width: 800px;
+  width: 220px;
+  right: 300px;
+  z-index: 9999 !important;
+  display: block !important;
+  .swiper-button-lock {
+    display: flex !important;
+    cursor: pointer;
+    z-index: 9999 !important;
+    pointer-events: all !important;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 8px 32px 0 rgba(133, 134, 146, 0.37);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 90px;
+    height: 70px;
+    color: #97a1ad;
+    z-index: 9999;
   }
 }
 </style>

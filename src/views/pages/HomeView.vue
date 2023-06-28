@@ -14,6 +14,8 @@ import HomeContentTabs from '../../components/Homepage/HomeContentTabs.vue'
 import { gsap } from 'gsap'
 import AnimatedImage from '../../components/Homepage/AnimatedImage.vue'
 import CustomerReviews from '../../components/Homepage/CustomerReviews.vue'
+import CustomersView from '../../components/Homepage/CustomersView.vue'
+import BlogUpdates from '../../components/Homepage/BlogUpdates.vue'
 
 let meetingContainer = ref(null)
 let certificationContainer = ref(null) // New ref for the certifications container
@@ -127,6 +129,8 @@ onMounted(() => {
       <img :src="teamPhotoMeeting" alt="" />
     </div>
     <CustomerReviews />
+    <CustomersView />
+    <BlogUpdates />
   </main>
 </template>
 
